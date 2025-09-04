@@ -1,5 +1,0 @@
-resources:
-  - ../../base
-images:
-  - name: akshat1414/suggest-microservice
-    newTag: sha-PLACEHOLDER
