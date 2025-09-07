@@ -18,6 +18,8 @@ spec:
       - name: backend
         image: akshat1414/suggest-microservice:latest
         imagePullPolicy: Always
+        securityContext:
+          allowPrivilegeEscalation: false
         ports:
         - containerPort: 8083
         resources:
