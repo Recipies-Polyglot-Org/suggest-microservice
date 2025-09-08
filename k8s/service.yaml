@@ -7,9 +7,12 @@ spec:
     app: backend-suggest
   type: ClusterIP
   ports:
-    - protocol: TCP
+    - name: http
+      protocol: TCP
       port: 80
       targetPort: 8083
-    - name: metrics          
+    - name: metrics
+      protocol: TCP
       port: 9100          
-      targetPort: 8081
+      targetPort: 8083
+
