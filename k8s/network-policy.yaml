@@ -11,13 +11,16 @@ spec:
   - Ingress
   - Egress
   ingress:
+  # allow backend-apigate pods (existing rule)
   - from:
     - podSelector:
         matchLabels:
           app: backend-apigate
     ports:
     - protocol: TCP
-      port: 8083 
+      port: 8083
+
+  # allow Prometheus pods in namespace labeled net=prom (monitoring)
   - from:
     - namespaceSelector:
         matchLabels:
@@ -28,18 +31,17 @@ spec:
     ports:
     - protocol: TCP
       port: 8083
-        
-  ports:
-  - protocol: TCP
-    port: 8083
+
   egress:
+  # allow outbound HTTPS (unchanged)
   - to:
     - ipBlock:
-        cidr: 0.0.0.0/0  
+        cidr: 0.0.0.0/0
     ports:
     - protocol: TCP
       port: 443
 
+  # allow DNS lookups to kube-dns (UDP 53)
   - to:
     - namespaceSelector:
         matchLabels:
@@ -49,7 +51,4 @@ spec:
           k8s-app: kube-dns
     ports:
     - protocol: UDP
-
       port: 53
-
-
