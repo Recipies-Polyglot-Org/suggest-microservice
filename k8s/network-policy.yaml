@@ -18,6 +18,17 @@ spec:
     ports:
     - protocol: TCP
       port: 8083 
+  - from:
+  - namespaceSelector:
+      matchLabels:
+        net: prom
+    podSelector:
+      matchLabels:
+        prometheus: kube-prom-kube-prometheus-prometheus
+        
+  ports:
+  - protocol: TCP
+    port: 8083
   egress:
   - to:
     - ipBlock:
@@ -35,4 +46,5 @@ spec:
           k8s-app: kube-dns
     ports:
     - protocol: UDP
+
       port: 53
