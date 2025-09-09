@@ -25,6 +25,9 @@ spec:
       podSelector:
         matchLabels:
           prometheus: kube-prom-kube-prometheus-prometheus
+    ports:
+    - protocol: TCP
+      port: 8083
         
   ports:
   - protocol: TCP
@@ -48,4 +51,5 @@ spec:
     - protocol: UDP
 
       port: 53
+
 
