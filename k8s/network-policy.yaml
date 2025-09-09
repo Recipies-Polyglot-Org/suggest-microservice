@@ -19,12 +19,12 @@ spec:
     - protocol: TCP
       port: 8083 
   - from:
-  - namespaceSelector:
-      matchLabels:
-        net: prom
-    podSelector:
-      matchLabels:
-        prometheus: kube-prom-kube-prometheus-prometheus
+    - namespaceSelector:
+        matchLabels:
+          net: prom
+      podSelector:
+        matchLabels:
+          prometheus: kube-prom-kube-prometheus-prometheus
         
   ports:
   - protocol: TCP
@@ -48,3 +48,4 @@ spec:
     - protocol: UDP
 
       port: 53
+
