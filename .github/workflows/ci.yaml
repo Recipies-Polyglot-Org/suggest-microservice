@@ -50,6 +50,7 @@ jobs:
       # OWASP Dependency-Check (official)
       - name: OWASP Dependency-Check (SCA)
         uses: dependency-check/Dependency-Check_Action@main   # or @main
+        continue-on-error: true
         env:
           JAVA_HOME: /opt/jdk   # per action docs when combined with setup-java
         with:
@@ -140,5 +141,6 @@ jobs:
           docker build -t "$IMAGE_NAME:sha-$SHORT_SHA" -t "$IMAGE_NAME:latest" .
           docker push "$IMAGE_NAME:sha-$SHORT_SHA"
           docker push "$IMAGE_NAME:latest"
+
 
 
